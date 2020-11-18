@@ -1,0 +1,6 @@
+{
+    "compilerOptions": {
+        "outDir": "./TS",
+    },
+    "include": ["./server.ts", "./parseconfig.ts", "./src/*"]
+}

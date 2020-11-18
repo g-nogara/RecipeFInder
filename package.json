@@ -1,0 +1,24 @@
+{
+  "name": "dmtech",
+  "version": "1.0.0",
+  "description": "Tech Challenge DM",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "tsc",
+    "watch:build": "tsc --watch",
+    "watch:server": "nodemon './dist/index.js' --watch './dist'",
+    "start": "npm-run-all clean build --parallel watch:build watch:server --print-label"
+  },
+  "author": "Guilherme Nogara",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node-fetch": "^2.5.7",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/node": "^14.14.8",
+    "eslint": "^7.3.0"
+  }
+}
