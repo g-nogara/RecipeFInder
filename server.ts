@@ -1,6 +1,7 @@
 import express = require("express");
 import http = require("http");
 
+import checkWebService from './src/util'
 import recipeRoute from "./src/routes/recipeRoute";
 
 const app = express();
@@ -24,10 +25,3 @@ server.listen(port, () => {
     server.close();
   } else console.log(`Listening on port ${port}`);
 });
-
-function checkWebService(service: string) {
-  return http.get(service, (res) => {
-    const { statusCode } = res;
-    return statusCode == 200
-  });
-}
