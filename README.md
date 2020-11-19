@@ -4,7 +4,7 @@ Tendo o docker instalado e funcionando, abra o terminal de sua preferência e na
 ```bash
 docker-compose up
 ```
-O projeto estará rodando no host local (`127.0.0.1` ou `localhost`), na pota 8080, podendo ser acessado usando, por exemplo, a url `http://127.0.0.1:8080/recipes/?i=orange,vanilla`
+O projeto estará rodando no host local (`127.0.0.1` ou `localhost`), na porta 8080, podendo ser acessado usando, por exemplo, a url `http://127.0.0.1:8080/recipes/?i=orange,vanilla`
 
 ---
 Os testes também precisam rodar de dentro do container. Felizmente existe um comando que já irá nos levar direto para lá:
