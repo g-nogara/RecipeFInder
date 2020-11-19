@@ -10,6 +10,8 @@ COPY . .
 
 EXPOSE 8080
 
-RUN npm run tsc
+RUN npm install typescript -g
 
-CMD [ "npm", "start" ]
+RUN tsc -p tsconfig.json
+
+CMD [ "node", "TS/server.js" ]

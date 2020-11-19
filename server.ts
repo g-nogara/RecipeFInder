@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/recipes", recipeRoute);
 
-const server = require("http").Server(app);
+const server = new http.Server(app);
 const port = process.env.PORT || 8080;
 
 server.listen(port, () => {
@@ -28,9 +28,6 @@ server.listen(port, () => {
 function checkWebService(service: string) {
   return http.get(service, (res) => {
     const { statusCode } = res;
-    if (statusCode != 200) {
-      return false;
-    }
-    return true;
+    return statusCode == 200
   });
 }

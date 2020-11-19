@@ -2,5 +2,6 @@
     "compilerOptions": {
         "outDir": "./TS",
     },
-    "include": ["./server.ts", "./parseconfig.ts", "./src/*"]
+    "include": ["./server.ts", "./types.ts", "./src/*"],
+    "types" : ["jest"]
 }
