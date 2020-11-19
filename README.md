@@ -1,16 +1,22 @@
-Para rodar e testar esse repositório, é recomendado utilizar [Docker](https://docs.docker.com/get-docker/ "Get Docker").
-Além disso, irá precisar de uma chave de [API para o giphy](https://developers.giphy.com/docs/api#quick-start-guide "Quickstart GIPHY").
-Tendo o docker instalado e rodando, abra o terminal de sua preferência e navegue para pasta que clonou o repositório. Iremos rodar os seguintes comandos:
-```bash
-docker build -t <nomeImagem> .
-```
-Onde `<nomeImagem>` pode ser o que quiseres. Mas detalhe com o ponto (<strong>.</strong>) no final do comando! Ele informa ao docker onde está o Dockerfile, que é necessário para construir a imagem.
+Para rodar e testar esse repositório, é necessário utilizar [Docker](https://docs.docker.com/get-docker/ "Get Docker") e [Docker Compose](https://docs.docker.com/compose/install/ "Install Docker Compose").
 
-Assim que esse comando terminar (pode demorar um pouco dependendo da velocidade da internet), iremos botar nossa imagem para rodar:
+Tendo o docker instalado e funcionando, abra o terminal de sua preferência e navegue para pasta que clonou o repositório. Iremos rodar o seguinte comando:
 ```bash
-docker run -p <PORTPC>:<PORTDOCKER> -e PORT=<PORTDOCKER> -e giphyKEY=<chaveAPI> -d <nomeImagem>
+docker-compose up
 ```
-Onde `<PORTPC>` é a porta da nossa rede, e `<PORTDOCKER>` é a porta exposta na rede do Docker. Além disso, `<chaveAPI>` é a chave da API do Giphy.
-Aqui temos algumas informações extras. Caso não esteja muito familiarizado, as opções `-p <PORTPC>:<PORTDOCKER>` e `-e PORT=<PORTDOCKER>` podem ser omitidas, e a porta padrão será exposta na 8080.
+O projeto estará rodando no host local (`127.0.0.1` ou `localhost`), na pota 8080, podendo ser acessado usando, por exemplo, a url `http://127.0.0.1:8080/recipes/?i=orange,vanilla`
 
-Com esses comandos concluídos, o projeto já está rodando e pronto para ser utilizado!
+---
+Os testes também precisam rodar de dentro do container. Felizmente existe um comando que já irá nos levar direto para lá:
+```bash
+docker exec -it $(docker ps | grep dmtech | awk '{print $1;}') /bin/bash
+```
+Assim, estaremos dentro do container da aplicação (dica, basta executar `exit` para sair). Lá de dentro podemos rodar
+```bash
+npx jest
+```
+E os testes serão executados.
+Caso queira validar a cobertura, basta executar
+```bash
+npx jest --coverage=true
+```
